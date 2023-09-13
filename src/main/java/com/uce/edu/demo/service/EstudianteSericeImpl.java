@@ -17,11 +17,12 @@ public class EstudianteSericeImpl implements IEstudianteService{
 	private IEstudianteRepository estudianteRepository;
 
 	@Override
-	public void insertarEstudiante(Estudiante estuddiante) {
-		// TODO Auto-generated method stub
-		this.estudianteRepository.insertarEstudiante(estuddiante);
-		
+	public EsrtudianteTo insertarEstudiante(EsrtudianteTo estuddiante) {
+		this.estudianteRepository.insertarEstudiante(this.convertirN(estuddiante));
+		Estudiante e =this.estudianteRepository.buscarEstudianteporCedula(estuddiante.getCedula());
+		return  this.convertir(e);
 	}
+	
 
 	@Override
 	public List<EsrtudianteTo> buscarTodos() {
@@ -50,5 +51,18 @@ public class EstudianteSericeImpl implements IEstudianteService{
 		return estudianteTo;
 		
 	}
+	
+	private Estudiante convertirN(EsrtudianteTo estudianteTO) {
+		Estudiante e = new Estudiante();
+		e.setNombre(estudianteTO.getNombre());
+		e.setApellido(estudianteTO.getApellido());
+		e.setCedula(estudianteTO.getCedula());
+
+		return e;
+	}
+
+	
+
+	
 
 }

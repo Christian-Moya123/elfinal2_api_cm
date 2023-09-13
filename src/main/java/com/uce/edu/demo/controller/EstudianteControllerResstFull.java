@@ -33,8 +33,9 @@ public class EstudianteControllerResstFull {
 	
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(code = HttpStatus.ACCEPTED)
-	public void guardar(@RequestBody Estudiante estudiante) {
-		this.estudianteService.insertarEstudiante(estudiante);
+	public ResponseEntity<EsrtudianteTo> guardar(@RequestBody EsrtudianteTo estudiante) {
+		EsrtudianteTo e=this.estudianteService.insertarEstudiante(estudiante);
+		return new ResponseEntity<>(e,null,200);
 	}
 	
 	@GetMapping(path = "/{cedula}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)

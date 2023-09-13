@@ -6,7 +6,7 @@ import com.uce.edu.demo.modelo.Estudiante;
 import com.uce.edu.demo.modelo.to.EsrtudianteTo;
 
 public interface IEstudianteService {
-	public void insertarEstudiante(Estudiante estuddiante);
+	public EsrtudianteTo insertarEstudiante(EsrtudianteTo estuddiante);
 	public List<EsrtudianteTo> buscarTodos();
 	public EsrtudianteTo buscarEstudianteporCedula(String cedula) ;
 
